@@ -21,7 +21,6 @@ export class CurrencyComponent implements OnInit {
 }
 
 interface Rate {
-  id: number
-  code: string
+  name: string
   rate: number
 }

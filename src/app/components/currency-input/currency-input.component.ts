@@ -8,13 +8,13 @@ import { ConversionService } from '../../services/conversion-service.service'
 })
 export class CurrencyInputComponent implements OnInit {
   @Input() model: any
-  @Input() conversionRates: Rate[]
+  // @Input() conversionRates: Rate[]
 
   name: string
   inputVal: number
   inputId: string = this.name
+  conversionRates: any[]
   selectedRate: string
-  allowedRates: string[]
 
   constructor(private conversionService: ConversionService) { }
 
@@ -23,10 +23,10 @@ export class CurrencyInputComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.conversionService.getRates().subscribe(rates => {
-      console.log(rates)
-      this.rates = rates
+    this.conversionService.getRates().subscribe(data => {
+      this.conversionRates = Object.keys(data.rates)
     });
+    console.log(this.conversionRates)
   }
 
   ngOnChanges() {
@@ -36,7 +36,6 @@ export class CurrencyInputComponent implements OnInit {
 }
 
 interface Rate {
-  id: number
-  code: string
+  name: string
   rate: number
 }
