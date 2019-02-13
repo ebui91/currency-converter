@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { ConversionServiceService } from './conversion-service.service';
+import { ConversionService } from './conversion-service.service';
 
-describe('ConversionServiceService', () => {
+describe('ConversionService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ConversionServiceService]
+      providers: [ConversionService]
     });
   });
 
-  it('should be created', inject([ConversionServiceService], (service: ConversionServiceService) => {
+  it('should be created', inject([ConversionService], (service: ConversionService) => {
     expect(service).toBeTruthy();
   }));
 });

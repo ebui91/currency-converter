@@ -21,7 +21,7 @@ export class CurrencyComponent implements OnInit {
   convertObject: object;
 
   getRates(): void {
-    this.currencyService.getRates(this.selectedBase)
+    this.conversionService.getRates(this.selectedBase)
       .subscribe(data => {
         let arr = [];
         Object.entries(data).forEach((key,i) => {
@@ -33,44 +33,10 @@ export class CurrencyComponent implements OnInit {
         console.log(`${this.selectedBase} to ${this.selectedConvert} = ${this.currencyRate}`);
       });
   }
-  constructor(private service: ConversionService) { }
+  constructor(private conversionService: ConversionService) { }
 
   ngOnInit() {
     this.getRates();
-
-    this.baseObject = {
-      name: 'base',
-      selectedRate: this.selectedBase,
-      inputValue: this.inputBase,
-      allowedRates: this.allowedRates,
-      onKeyup: this.onKeyupBase,
-      onSelect: this.onSelectBase,
-    }
-
-    this.convertObject = {
-      name: 'convert',
-      selectedRate: this.selectedConvert,
-      inputValue: this.inputConvert,
-      allowedRates: this.allowedRates,
-      onKeyup: this.onKeyupConvert,
-      onSelect: this.onSelectBase,
-    }
-  }
-
-  ngDoCheck() {
-    this.baseObject = {
-      selectedRate: this.selectedBase,
-      inputValue: this.inputBase,
-      allowedRates: this.allowedRates,
-    }
-
-    this.convertObject = {
-      name: 'convert',
-      selectedRate: this.selectedConvert,
-      inputValue: this.inputConvert,
-      allowedRates: this.allowedRates,
-    }
-  }
 }
 
 interface Rate {
