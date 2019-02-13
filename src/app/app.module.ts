@@ -22,7 +22,7 @@ import { CurrencyComponent } from './components/currency/currency.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [ConversionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

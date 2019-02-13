@@ -16,17 +16,17 @@ export class CurrencyInputComponent implements OnInit {
   selectedRate: string
   allowedRates: string[]
 
-  constructor() { }
+  constructor(private conversionService: ConversionService) { }
 
   onSelect(e) {
     this.onSelectFn.emit(e);
   }
 
   ngOnInit() {
-    this.name = `currency-${this.model.name}`;
-    this.inputVal = this.model.inputValue;
-    this.selectedRate = this.model.selectedRate;
-    this.allowedRates = this.model.allowedRates;
+    this.conversionService.getRates().subscribe(rates => {
+      console.log(rates)
+      this.rates = rates
+    });
   }
 
   ngOnChanges() {

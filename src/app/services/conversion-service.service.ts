@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import 'rxjs/add/operator/map'
+
 // import { Observable } from 'rxjs/Observable';
 // import 'rxjs/add/observable/fromPromise';
 
@@ -7,16 +9,13 @@ import { Http } from '@angular/http';
 export class ConversionService {
   constructor(private http: Http) {}
 
-  getRates(): Observable<Rate[]> {
+  getRates() {
     let apiKey = "5563538c43401d3ad65c2e83880be6f8"
     let baseUrl = `https://data.fixer.io/api/latest?access_key=${apiKey}`;
     let rates = [];
 
     return this.http.get("http://data.fixer.io/api/latest?access_key=5563538c43401d3ad65c2e83880be6f8&format=1")
-      .map(res => {
-        console.log(res)
-        return res.json()
-      })
+      .map(res => res.json())
 
     // return Observable.fromPromise(fetch("http://data.fixer.io/api/latest?access_key=5563538c43401d3ad65c2e83880be6f8&format=1")
     //   .then(res => res.json())
