@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, ElementRef } from '@angular/core';
-
 declare var cytoscape: any
 
 @Component({

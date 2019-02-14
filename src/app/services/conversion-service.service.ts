@@ -10,13 +10,18 @@ export class ConversionService {
 
   getRates(): Observable<any> {
     let apiKey = "5563538c43401d3ad65c2e83880be6f8"
-    let baseUrl = `https://data.fixer.io/api/latest?access_key=${apiKey}`;
+    // Latest rates with EUR as a base
+    // let baseUrl = `https://data.fixer.io/api/latest?access_key=${apiKey}`;
 
-    // If using mock data
-    // return this.http.get('./mock-data.json')
-    //   .map(res => res.json());
+    // Actual conversion endpoint:
+    // https://data.fixer.io/api/convert
+    // ? access_key = API_KEY
+    // & from = GBP
+    // & to = JPY
+    // & amount = 25
+    let baseUrl = "https://data.fixer.io/api/convert"
 
-    // If using API
+
     return this.http.get("http://data.fixer.io/api/latest?access_key=5563538c43401d3ad65c2e83880be6f8&format=1")
       .map(res => res.json())
   }

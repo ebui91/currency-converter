@@ -17,8 +17,9 @@
     <option 
       *ngFor="let rate of conversionRates" 
       [ngValue]=rate.rate
+      (select)="onSelect()"
     >
-      {{ rate.name }}
+      {{ rate.name }}: {{ rate.rate }}
     </option>
   </select>
 </div>
