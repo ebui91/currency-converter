@@ -3,9 +3,7 @@
     #input type="number" 
     placeholder="$0.00" 
     [(ngModel)]="inputVal" 
-    [attr.id]="inputId" 
     [name]="name"
-    (click)="input.select()" 
   >
 
   <select 
@@ -15,11 +13,11 @@
   >
     <option>{{ selectedRate }}</option>
     <option 
-      *ngFor="let rate of conversionRates" 
-      [ngValue]=rate.rate
+      *ngFor="let currency of currencies" 
+      [ngValue]=currency.name
       (select)="onSelect()"
     >
-      {{ rate.name }}: {{ rate.rate }}
+      {{ currency.name }}: {{ currency.rate }}
     </option>
   </select>
 </div>

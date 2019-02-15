@@ -10,12 +10,12 @@ declare var require;
 export class CurrencyInputComponent implements OnInit {
   mockData = require('../../services/mock-data.json')
   @Input() model: any
-  // @Input() conversionRates: Rate[]
+  // @Input() currencies: any[]
 
   name: string
   inputVal: number
   inputId: string = this.name
-  conversionRates: any[]
+  currencies: any[]
   selectedRate: string
 
   constructor(private conversionService: ConversionService) { }
@@ -24,10 +24,14 @@ export class CurrencyInputComponent implements OnInit {
     console.log(e)
   }
 
+  handleSelection() {
+    let mockConversion = require("../../services/mock-conversion-data.json")
+  }
+
   parseData() {
     // If using mock data:
-    let mockData = require('../../services/mock-data.json')
-    this.conversionRates = Object.entries(mockData.rates)
+    let mockData = require("../../services/mock-data.json")
+    this.currencies = Object.entries(mockData.rates)
         .map(([key, val]) => {
           return { name: key, rate: val }
         })
@@ -35,7 +39,7 @@ export class CurrencyInputComponent implements OnInit {
     // If using API:
     // this.conversionService.getRates()
     // .subscribe(data => {
-    //   this.conversionRates = Object.entries(data.rates)
+    //   this.currencies = Object.entries(data.rates)
     //     .map(([key, val]) => {
     //       return { name: key, rate: val }
     //     })
@@ -44,7 +48,6 @@ export class CurrencyInputComponent implements OnInit {
 
   ngOnInit() {
     this.parseData()
-    console.log(this.mockData)
   }
 
   ngOnChanges() {
